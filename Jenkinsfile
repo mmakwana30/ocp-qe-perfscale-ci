@@ -272,31 +272,12 @@ pipeline {
                         source venv3/bin/activate
                         python --version
                         pip install pytimeparse futures
-                        #if [[ $WORKLOAD == "cluster-density" ]]; then
-                        #export JOB_ITERATIONS=$VARIABLE
-                        #elif [[ $WORKLOAD == "pod-density" ]] || [[ $WORKLOAD == "pod-density-heavy" ]]; then
-                        #export PODS=$VARIABLE
-                        #elif [[ $WORKLOAD == "max-namespaces" ]]; then
-                        #export NAMESPACE_COUNT=$VARIABLE
-                        #elif [[ $WORKLOAD == "max-services" ]]; then
-                        #export SERVICE_COUNT=$VARIABLE
-                        #elif [[ $WORKLOAD == "node-density" ]] || [[ $WORKLOAD == "node-density-heavy" ]]; then
-                        #export PODS_PER_NODE=$VARIABLE
-                        #fi
-                        #set -o pipefail
                         pwd
-                        echo "workspace $WORKSPACE"
 			./jmeter_cluster_create.sh 
 			oc get pods
 			./dashboard.sh && ./start_test.sh
                     ''')
 			
-                    #output = sh(returnStdout: true, script: 'cat workloads/kube-burner/kube-burner.out')
-                    #archiveArtifacts(
-                        #artifacts: 'workloads/kube-burner/kube-burner.out',
-                        #allowEmptyArchive: true,
-                        #fingerprint: true
-                    #)
                     if (RETURNSTATUS.toInteger() == 0) {
                         status = "PASS"
                     }
