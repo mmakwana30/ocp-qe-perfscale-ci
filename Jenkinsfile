@@ -253,7 +253,7 @@ pipeline {
                     env.EMAIL_ID_FOR_RESULTS_SHEET = "${userId}@redhat.com"
                 }
                 withCredentials([file(credentialsId: 'sa-google-sheet', variable: 'GSHEET_KEY_LOCATION')]) {
-                    RETURNSTATUS = sh(returnStatus: true, script: '''
+                    RETURNSTATUS = sh(returnStatus: true, script: 
                         # Get ENV VARS Supplied by the user to this job and store in .env_override
                         echo "$ENV_VARS" > .env_override
                         # Export those env vars so they could be used by CI Job
@@ -265,8 +265,8 @@ pipeline {
                         mkdir -p ~/.kube
                         cp $WORKSPACE/flexy-artifacts/workdir/install-dir/auth/kubeconfig ~/.kube/config
                         ls -ls ~/.kube/
-		 	ls	
-                        //cd kubernetes-jmeter/openshift/ 
+		 	            ls	
+                        cd kubernetes-jmeter/openshift/ 
                         python3.9 --version
                         python3.9 -m pip install virtualenv
                         python3.9 -m virtualenv venv3
@@ -274,10 +274,10 @@ pipeline {
                         python --version
                         pip install pytimeparse futures
                         pwd
-			./jmeter_cluster_create.sh 
-			oc get pods
-			./dashboard.sh && ./start_test.sh
-                    ''')
+			            ./jmeter_cluster_create.sh 
+			            oc get pods
+			            ./dashboard.sh && ./start_test.sh
+                    )
 			
                     if (RETURNSTATUS.toInteger() == 0) {
                         status = "PASS"
