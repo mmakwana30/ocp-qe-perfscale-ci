@@ -265,8 +265,8 @@ pipeline {
                         mkdir -p ~/.kube
                         cp $WORKSPACE/flexy-artifacts/workdir/install-dir/auth/kubeconfig ~/.kube/config
                         ls -ls ~/.kube/
-		 	            ls	
-                        cd kubernetes-jmeter/openshift/ 
+		 	            ls
+                        cd openshift/
                         python3.9 --version
                         python3.9 -m pip install virtualenv
                         python3.9 -m virtualenv venv3
