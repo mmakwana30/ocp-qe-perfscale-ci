@@ -169,7 +169,7 @@ pipeline {
       )
       string(
           name: 'KUBERNETES_JMETER',
-          defaultValue: 'https://github.com/SachinNinganure/kubernetes-jmeter.git',
+          defaultValue: 'https://github.com/mmakwana30/ocp-qe-perfscale-ci/tree/JMeter',
           description: 'Changed the default value to point Jmeter repo'
       )
       string(
