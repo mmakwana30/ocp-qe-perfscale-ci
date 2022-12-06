@@ -253,7 +253,7 @@ pipeline {
                     env.EMAIL_ID_FOR_RESULTS_SHEET = "${userId}@redhat.com"
                 }
                 withCredentials([file(credentialsId: 'sa-google-sheet', variable: 'GSHEET_KEY_LOCATION')]) {
-                    RETURNSTATUS = sh(returnStatus: true, script: 
+                    RETURNSTATUS = sh(returnStatus: true, script: '''
                         # Get ENV VARS Supplied by the user to this job and store in .env_override
                         echo "$ENV_VARS" > .env_override
                         # Export those env vars so they could be used by CI Job
@@ -277,7 +277,7 @@ pipeline {
 			            ./jmeter_cluster_create.sh 
 			            oc get pods
 			            ./dashboard.sh && ./start_test.sh
-                    )
+                    ''')
 			
                     if (RETURNSTATUS.toInteger() == 0) {
                         status = "PASS"
