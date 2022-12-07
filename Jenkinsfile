@@ -275,10 +275,10 @@ pipeline {
                         pip install pytimeparse futures
                         pwd
 			            ./jmeter_cluster_create.sh
-                        sleep 5m
+                        sleep 3m
 			            oc get pods --no-headers -A | egrep -v 'Running|Completed'
 			            ./dashboard.sh
-                        sleep 3m
+                        sleep 2m
                         ./start_test.sh
                     ''')
 			
