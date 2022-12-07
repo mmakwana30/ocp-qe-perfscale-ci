@@ -276,7 +276,7 @@ pipeline {
                         pwd
 			            ./jmeter_cluster_create.sh
                         sleep 5m
-			            oc get pods --no-headers -a | egrep -v 'Running|Completed'
+			            oc get pods --no-headers -A | egrep -v 'Running|Completed'
 			            ./dashboard.sh
                         sleep 3m
                         ./start_test.sh
