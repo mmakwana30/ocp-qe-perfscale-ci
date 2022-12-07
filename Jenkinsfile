@@ -273,10 +273,9 @@ pipeline {
                         source venv3/bin/activate
                         python --version
                         pip install pytimeparse futures
-                        pwd
 			            ./jmeter_cluster_create.sh
                         sleep 3m
-			            oc get pods --no-headers -A | egrep -v 'Running|Completed'
+			            oc get pods
 			            ./dashboard.sh
                         sleep 2m
                         ./start_test.sh
