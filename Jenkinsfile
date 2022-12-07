@@ -274,9 +274,12 @@ pipeline {
                         python --version
                         pip install pytimeparse futures
                         pwd
-			            ./jmeter_cluster_create.sh 
-			            oc get pods
-			            ./dashboard.sh && ./start_test.sh
+			            ./jmeter_cluster_create.sh
+                        sleep 5m
+			            oc get pods --no-headers -a | egrep -v 'Running|Completed'
+			            ./dashboard.sh
+                        sleep 3m
+                        ./start_test.sh
                     ''')
 			
                     if (RETURNSTATUS.toInteger() == 0) {
